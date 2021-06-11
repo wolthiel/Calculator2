@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -261,5 +260,10 @@ public class UserInterface
             status.setText(calc.getAuthor());
 
         showingAuthor = !showingAuthor;
+    }
+    public String getDisplay()
+    {
+        String newString = display.getText();
+        return newString;
     }
 }
