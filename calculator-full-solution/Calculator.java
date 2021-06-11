@@ -8,7 +8,7 @@
 public class Calculator
 {
     private CalcEngine engine;
-    private UserInterface gui;
+    public static UserInterface gui;
 
     /**
      * Create a new calculator and show it.
