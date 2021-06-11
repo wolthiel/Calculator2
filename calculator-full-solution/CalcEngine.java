@@ -117,6 +117,10 @@ public class CalcEngine
             lastOperator = '?';
             buildingDisplayValue = false;
         }
+        else if (Calculator.gui.getDisplay() != null)
+        {
+            System.out.println(Calculator.gui.getDisplay());
+        }
         else {
             keySequenceError();
         }
