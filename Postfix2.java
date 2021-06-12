@@ -78,6 +78,8 @@ public class Postfix {
 		StackAsList.StackListIterator iterator = stackforDigits.new StackListIterator();
 		String result = "";
 		Object op = '(';
+		
+		while (iterator.hasNext()) {
 		for (char t : characters) {
 			if (Character.isDigit(t)) {
 				result = result + t;
@@ -85,29 +87,28 @@ public class Postfix {
 				stackforDigits.addFirstNode(t);
 			} else if (t == ')') {
 				while (stackforDigits.peek() == op) {
-					result = result + stackforDigits.peek();
+					result = result + stackforDigits.peekAsString();
 					stackforDigits.removeFirst();
 				}
-				if (stackforDigits.peek() == op) {
-					stackforDigits.removeFirst();
-				}
+				stackforDigits.removeFirst();
 			} else if (t == '+' || t == '-' || t == '*' || t == '/') {
 				while (iterator.hasNext()) {
-					while (!(stackforDigits.peek().equals(!(highPrecedence(t)) || (lowPrecedence(t))))) {
-						result = result + stackforDigits.peek();
+					while (!(stackforDigits.peek().equals(!(highPrecedence(t))) || (lowPrecedence(t)))) {
+						result = result + stackforDigits.peekAsString();
 						stackforDigits.removeFirst();
 					}
 					stackforDigits.addFirstNode(t);
 				}
 			}
-		}
+		
 		while (!stackforDigits.isEmpty()) {
-			result = result + stackforDigits.peek();
+			result = result + stackforDigits.peekAsString();
 			stackforDigits.removeFirst();
+			}
 		}
-		return result;
 	}
-
+		return result;
+}
 	private boolean highPrecedence(char c) {
 		return (c == '*' || c == '/');
 	}
