@@ -77,7 +77,7 @@ public class Postfix {
 		StackAsList stackforDigits = new StackAsList();
 		char[] characters = ifx.toCharArray();
 		String result = "";
-		char op = '(';
+		Object op = '(';
 		
 		for(char t:characters) {
 			if(Character.isDigit(t)) {
@@ -85,15 +85,16 @@ public class Postfix {
 			}else if(t == '(') {
 				stackforDigits.addFirstNode(t);
 			}else if(t == ')') {
-				while(stackforDigits.peek() == op.toObject){
+				while(stackforDigits.peek() == op){
 					result = result + stackforDigits.peek();	
 					stackforDigits.removeFirst();
 			}
-				if(stackforDigits.peek() == '(')
+				if(stackforDigits.peek() == op) { 
 				stackforDigits.removeFirst();
+				}
 			}
 			else if(t == '+' || t == '-' || t == '*' || t == '/') {
-				while(!(stackforDigits.peek().equals(!(highPrecedence(t)) || t == lowPrecedence(t)) )) {
+				while(!(stackforDigits.peek().equals(!(highPrecedence(t)) || (lowPrecedence(t))))) {
 					result = result + stackforDigits.peek();
 					stackforDigits.removeFirst();
 				}
@@ -110,6 +111,7 @@ public class Postfix {
 	private boolean highPrecedence(char c) {
 		return (c == '*' || c == '/');
 	}
+	
 	private boolean lowPrecedence(char c) {
 		return (c == '+' || c == '-');
 	}
@@ -121,3 +123,4 @@ public class Postfix {
 			System.out.println("Output: " + evaluate(console));
 		}
 }
+
