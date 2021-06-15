@@ -24,4 +24,6 @@ comment7.text=\r\n\ Update\ the\ interface\ display\ to\ show\ the\ current\ val
 comment8.params=
 comment8.target=void\ showInfo()
 comment8.text=\r\n\ Toggle\ the\ info\ display\ in\ the\ calculator's\ status\ area\ between\ the\r\n\ author\ and\ version\ information.\r\n
-numComments=9
+comment9.params=
+comment9.target=java.lang.String\ getDisplay()
+numComments=10
